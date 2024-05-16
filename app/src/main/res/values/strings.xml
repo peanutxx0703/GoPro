@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">GoPro Application</string>
+    <string name="welcome_text">Welcome\nto\nGoPro</string>
+    <string name="welcome_option">You are a</string>
+    <string name="welcome_teacher">Teacher</string>
+    <string name="welcome_student">Student</string>
+
+    <string name="sign_up_text">Sign Up</string>
+    <string name="teacher_sign_up_text">Teacher\nSign Up</string>
+    <string name="student_sign_up_text">Student\nSign Up</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="or_text"> OR </string>
+
+    <string name="log_in_redirect">Already have an account? </string>
+    <string name="log_in_text">Log In</string>
+    <string name="teacher_log_in_text">Teacher\nLog In</string>
+    <string name="student_log_in_text">Student\nLog In</string>
+    <string name="sign_up_redirect">Do not have an account? </string>
+    <string name="forgot_password">Forgot your password? </string>
+    <string name="forgot_password_heading">Forgot Password</string>
+    <string name="authentication_pin">Authentication PIN</string>
+
+    <string name="homescreen">Home</string>
+
+    <string name="agree_terms_and_privacy">I agree to Terms and Conditions and Privacy Policy</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="tncs_1">\n1. Subject and Scope\n
+    \n\n1.1\nGoPro applications for Android, and related services are operated by GoPro Sdn. Bhd. (“GoPro,” “us,” or “we”).
+    \n\n1.2\nYour use of the services is subject to the following terms and conditions.
+    \n\n1.3\nBy accessing or using any part of the services, you accept the application of these terms and conditions.
+    \n\n1.4\nGoPro may amend, change, or update these terms and conditions. If GoPro does not obtain your specific consent for any revisions of its terms and conditions, you will be notified at least seven days before the effective date of the updated terms and conditions.
+    \n\n1.5\nAny revisions to the terms and conditions will become effective the earlier of either the end of the seven-day period or the first time you access or use the services after such revisions.</string>
+
+    <string name="tncs_2">2. Services and Rights\n
+    \n\n2.1\nThe services allow you to access and use various educational content and training services on computer science, programming, software development, and similar topics.
+    \n\n2.2\nSubject to these terms and conditions, GoPro grants you a non-exclusive and non-transferable license to download, install, and use a copy of the apps on a compatible device in your control or ownership.
+    \n\n2.3\nAll content available through the services, including audio, designs, graphics, images, information, software, text, and other files as well as their arrangement and selection are the proprietary property of GoPro or its licensors. You may not copy, distribute, display, download, post, reproduce, republish, scrape, sell, or transmit, in any form or by any means, in whole or in part, other than as expressly permitted in these terms and conditions.
+    \n\n2.4\n“GoPro” and all other trademarks, service marks, graphics, and logos used in connection with the services are trademarks or service marks of GoPro or their respective owners. Access or use of the services does not grant or provide you with the right or license to reproduce or otherwise use GoPro trademarks, service marks, graphics, and logos.
+    \n\n2.5\nYou may not derive or attempt to derive the source code of any part of the services, permit any third party to derive or attempt to derive such source code, or decompile, disassemble, reverse engineer, or translate the services or any part thereof. GoPro and its licensors own and shall retain all intellectual property rights and other rights in and to the services and any changes, modifications, or corrections thereto.
+    \n\n2.6\nYou represent and warrant that your access and use of the service is in accordance with these terms and conditions and all applicable laws, rules, and regulations of the Republic of Austria and any other relevant jurisdiction.
+    \n\n2.7\nGoPro may change, update, suspend, make improvements to, or discontinue any aspects of the services.</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="pp_1">1. General\n
+    \n\n1.1\nThis policy provides transparency about how GoPro Sdn. Bhd. (“GoPro,” “us,” or “we”) collects, receives, processes, uses, discloses, or shares your information. When you use our apps, websites, or other services or otherwise form a relationship with us, we may obtain data from you or your devices.
+    \n\n1.2\nWe want to show you that we handle your personal information confidentially and responsibly and that any processing of your personal information happens in compliance with the local information privacy laws.
+    \n\n1.3\nTo avoid unauthorized access to your personal data and generally secure such data, we use encrypted transmission and encrypted storage. Those safety measures are constantly revised to comply with the latest technological developments.
+    \n\n1.4\nWe may update our privacy policy to reflect changes to our information practices. If we do this and the changes are material, we will post a notice that we have made changes to this privacy policy on the Websites for at least seven days after the changes are made, ask for your consent, and indicate the date these terms were last revised at the bottom of the privacy policy. Any revisions to this privacy policy will become effective the earlier of either (i) the end of that seven-day period or (ii) the first time you access or use the Services after any such changes.</string>
+
+    <string name="contact_us">Contact Us</string>
+
+    <string name="edit_profile_text">Edit Profile</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="cancel_noti">Cancelled</string>
+    <string name="save_text">Save</string>
+    <string name="save_noti">Profile Updated</string>
+    <string name="bio_text">Bio</string>
+    <string name="change_text">Change Profile Picture</string>
+
+    <string name="settings_text">Settings</string>
+    <string name="more_settings">More Settings</string>
+    <string name="account">Account</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_password_text">Enter your registered email below to reset password</string>
+    <string name="make_sure">Please make sure the email entered is valid and correct</string>
+    <string name="send_link">Send Link</string>
+    <string name="general">General</string>
+    <string name="notifications">Notifications</string>
+    <string name="share">Share this app</string>
+    <string name="support">Support</string>
+    <string name="about">About</string>
+    <string name="log_out">Log Out</string>
+
+    <string name="student_profile">Student Profile</string>
+    <string name="teacher_profile">Teacher Profile</string>
+    <string name="invite">Invite</string>
+    <string name="invite_header">Invite Friends</string>
+    <string name="invite_text">Learn coding with your friends</string>
+    <string name="copy_text">Install and Learn With Fun https://play.google.com/store/apps/details?id=app.tarc.edu.my</string>
+
+</resources>
