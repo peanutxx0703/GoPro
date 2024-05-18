@@ -6,6 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.goproapplication.data.login.StudentLoginViewModel
 import com.example.goproapplication.data.login.TeacherLoginViewModel
 import com.example.goproapplication.data.signup.SignUpViewModel
@@ -29,6 +33,12 @@ import com.example.goproapplication.teacher.settings.TeacherContactUsScreen
 import com.example.goproapplication.teacher.settings.TeacherPrivacyPolicyScreen
 import com.example.goproapplication.teacher.settings.TeacherSettingsScreen
 import com.example.goproapplication.teacher.settings.TeacherTermsAndConditionsScreen
+import com.example.goproapplication.ui.theme.AnnouncementScreen
+import com.example.goproapplication.ui.theme.GenerateTuitionFeeMonthly
+import com.example.goproapplication.ui.theme.PostAnnouncement
+import com.example.goproapplication.ui.theme.StudentAnnouncementScreen
+import com.example.goproapplication.ui.theme.StudentDashboardScreen
+import com.example.goproapplication.ui.theme.TeacherDashboardScreen
 
 
 @Composable
@@ -36,11 +46,11 @@ fun GoProApp(){
     Surface(modifier = Modifier.fillMaxSize()) {
         Crossfade(targetState = GoProAppRoute.currentScreen) { currentState->
             when(currentState.value){
-                is Screen.WelcomeScreen -> WelcomeScreen()
+                is Screen.WelcomeScreen -> WelcomeScreen(navController =  rememberNavController())
                 is Screen.ForgotPasswordScreen -> ForgotPasswordScreen()
 
                 //Teacher
-                is Screen.TeacherLoginScreen -> TeacherLoginScreen(TeacherLoginViewModel())
+                is Screen.TeacherLoginScreen -> TeacherLoginScreen(navController = rememberNavController(),TeacherLoginViewModel())
                 is Screen.TeacherSignUpScreen -> TeacherSignUpScreen(SignUpViewModel())
                 is Screen.TeacherProfileScreen -> TeacherProfileScreen(ProfileViewModel())
                 is Screen.TeacherSettingsScreen -> TeacherSettingsScreen(TeacherLoginViewModel())
@@ -58,7 +68,24 @@ fun GoProApp(){
                 is Screen.StudentContactUsScreen -> StudentContactUsScreen()
                 is Screen.StudentTermsAndConditionsScreen -> StudentTermsAndConditionsScreen()
                 is Screen.StudentPrivacyPolicyScreen -> StudentPrivacyPolicyScreen()
+
+                //QR
+                is Screen.CourseViewScreen -> CourseViewScreen()
+                is Screen.TeacherCourseViewScreen -> TeacherCourseViewScreen()
+
+                //WJ
+                is Screen.TeacherViewScreen -> TeacherView()
+                is Screen.AnnouncementScreen -> AnnouncementScreen()
+                is Screen.TeacherDashboardScreen -> TeacherDashboardScreen()
+                is Screen.PostAnnouncementScreen -> PostAnnouncement()
+                is Screen.TeacherNav -> TeacherNavBar()
+
+                is Screen.StudentDashboardScreen -> StudentDashboardScreen()
+                is Screen.GenerateTuitionFeeMonthlyScreen -> GenerateTuitionFeeMonthly()
+                is Screen.StudentAnnouncementScreen -> StudentAnnouncementScreen()
+                is Screen.StudentNav -> StudentNavBar()
             }
         }
     }
 }
+

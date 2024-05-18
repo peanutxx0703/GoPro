@@ -265,7 +265,7 @@ fun PinTextFieldComponent(labelValue: String, painterResource: Painter, expected
 }
 
 @Composable
-fun ButtonComponent(value: String, onButtonClicked : () -> Unit, isEnabled : Boolean){
+fun ButtonComponent(value: String, onButtonClicked :  () -> Unit, isEnabled : Boolean){
     Button(
         onClick = {
             onButtonClicked.invoke()
@@ -412,7 +412,7 @@ fun CardItemComponent(painterResource: Painter, value: String, onClick: () -> Un
         colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.dark_purple)),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp)
+            .padding(7.dp)
     ){
         Row(
             modifier = Modifier

@@ -1,5 +1,6 @@
 package com.example.goproapplication.teacher.login
 
+import ProfileViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,7 +25,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.goproapplication.CourseViewScreen
+import com.example.goproapplication.SplashScreen
 import com.example.goproapplication.R
+import com.example.goproapplication.StudentNavBar
+import com.example.goproapplication.TeacherCourseViewScreen
+import com.example.goproapplication.TeacherNav
+import com.example.goproapplication.TeacherNavBar
 import com.example.goproapplication.components.ButtonComponent
 import com.example.goproapplication.components.ClickableLoginComponent
 import com.example.goproapplication.components.DividerTextComponent
@@ -34,13 +45,85 @@ import com.example.goproapplication.components.PasswordTextFieldComponent
 import com.example.goproapplication.components.PinTextFieldComponent
 import com.example.goproapplication.components.UnderlinedTextComponent
 import com.example.goproapplication.data.login.LoginUIEvent
+import com.example.goproapplication.data.login.StudentLoginViewModel
 import com.example.goproapplication.data.login.TeacherLoginViewModel
+import com.example.goproapplication.data.signup.SignUpViewModel
 import com.example.goproapplication.navigation.GoProAppRoute
 import com.example.goproapplication.navigation.Screen
 import com.example.goproapplication.navigation.SystemBackButtonHandler
+import com.example.goproapplication.screens.ForgotPasswordScreen
+import com.example.goproapplication.screens.WelcomeScreen
+import com.example.goproapplication.student.login.StudentLoginScreen
+import com.example.goproapplication.student.profile.StudentProfileScreen
+import com.example.goproapplication.student.settings.StudentChangePasswordScreen
+import com.example.goproapplication.student.settings.StudentContactUsScreen
+import com.example.goproapplication.student.settings.StudentPrivacyPolicyScreen
+import com.example.goproapplication.student.settings.StudentSettingsScreen
+import com.example.goproapplication.student.settings.StudentTermsAndConditionsScreen
+import com.example.goproapplication.student.signup.StudentSignUpScreen
+import com.example.goproapplication.teacher.profile.TeacherProfileScreen
+import com.example.goproapplication.teacher.settings.TeacherChangePasswordScreen
+import com.example.goproapplication.teacher.settings.TeacherContactUsScreen
+import com.example.goproapplication.teacher.settings.TeacherPrivacyPolicyScreen
+import com.example.goproapplication.teacher.settings.TeacherSettingsScreen
+import com.example.goproapplication.teacher.settings.TeacherTermsAndConditionsScreen
+import com.example.goproapplication.teacher.signup.TeacherSignUpScreen
+import com.example.goproapplication.ui.theme.AnnouncementScreen
+import com.example.goproapplication.ui.theme.GenerateTuitionFeeMonthly
+import com.example.goproapplication.ui.theme.PostAnnouncement
+import com.example.goproapplication.ui.theme.StudentAnnouncementScreen
+import com.example.goproapplication.ui.theme.StudentDashboardScreen
+import com.example.goproapplication.ui.theme.TeacherDashboardScreen
 
 @Composable
-fun TeacherLoginScreen(teacherLoginViewModel: TeacherLoginViewModel){
+fun MyApp(){
+    val navController= rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = "home" // Set your initial destination
+    ) {
+        composable("home"){ SplashScreen(navController = navController) }
+        composable("welcome") { WelcomeScreen(navController = navController) }
+        composable("forgotPassword") { ForgotPasswordScreen() }
+
+        // Teacher screens
+        composable("teacherLogin") {
+            TeacherLoginScreen(navController = navController, teacherLoginViewModel = TeacherLoginViewModel())
+        }
+        composable("teacherSignUp") { TeacherSignUpScreen(SignUpViewModel()) }
+        composable("teacherProfile") { TeacherProfileScreen(ProfileViewModel()) }
+        composable("teacherSettings") { TeacherSettingsScreen(TeacherLoginViewModel()) }
+        composable("teacherChangePassword") { TeacherChangePasswordScreen() }
+        composable("teacherContactUs") { TeacherContactUsScreen() }
+        composable("teacherTermsAndConditions") { TeacherTermsAndConditionsScreen() }
+        composable("teacherPrivacyPolicy") { TeacherPrivacyPolicyScreen() }
+
+        // Student screens
+        composable("studentLogin") { StudentLoginScreen(StudentLoginViewModel()) }
+        composable("studentSignUp") { StudentSignUpScreen(SignUpViewModel()) }
+        composable("studentProfile") { StudentProfileScreen(ProfileViewModel()) }
+        composable("studentSettings") { StudentSettingsScreen(StudentLoginViewModel()) }
+        composable("studentChangePassword") { StudentChangePasswordScreen() }
+        composable("studentContactUs") { StudentContactUsScreen() }
+        composable("studentTermsAndConditions") { StudentTermsAndConditionsScreen() }
+        composable("studentPrivacyPolicy") { StudentPrivacyPolicyScreen() }
+
+        // Other screens
+        composable("courseView") { CourseViewScreen() }
+        composable("teacherCourseView") { TeacherCourseViewScreen() }
+        composable("announcement") { AnnouncementScreen() }
+        composable("teacherDashboard") { TeacherDashboardScreen() }
+        composable("postAnnouncement") { PostAnnouncement() }
+        composable("teacherNav") { TeacherNavBar() }
+        composable("studentDashboard") { StudentDashboardScreen() }
+        composable("generateTuitionFeeMonthly") { GenerateTuitionFeeMonthly() }
+        composable("studentAnnouncement") { StudentAnnouncementScreen() }
+        composable("studentNav") { StudentNavBar() }
+    }
+}
+@Composable
+fun TeacherLoginScreen(navController: NavController,teacherLoginViewModel: TeacherLoginViewModel){
+
     val context = LocalContext.current
     val expectedPin = "GoPro123***"
     var isPinCorrect by remember { mutableStateOf(false) }
@@ -50,6 +133,13 @@ fun TeacherLoginScreen(teacherLoginViewModel: TeacherLoginViewModel){
     }
     if (enteredPin == expectedPin) { isPinCorrect = true }
 
+    // Observe login success state
+    //val loginSuccess by teacherLoginViewModel.loginSuccess
+
+    // Navigate to TeacherNav when login is successful
+    //if (loginSuccess) {
+        //navController.navigate("teacherNav")
+    //}
     Box(modifier = Modifier.fillMaxSize()
     ) {
         Image(
@@ -101,8 +191,8 @@ fun TeacherLoginScreen(teacherLoginViewModel: TeacherLoginViewModel){
                 value = stringResource(id = R.string.log_in_text),
                 onButtonClicked = {
                     teacherLoginViewModel.login(context)
+                                  },
 //                    loginViewModel.onEvent(LoginUIEvent.LoginButtonClicked)
-                },
                 isEnabled = teacherLoginViewModel.allValidationPassed.value && isPinCorrect
             )
             Spacer(modifier = Modifier.height(30.dp))
@@ -123,8 +213,3 @@ fun TeacherLoginScreen(teacherLoginViewModel: TeacherLoginViewModel){
     }
 }
 
-@Preview
-@Composable
-fun TeacherLoginScreenPreview(){
-    TeacherLoginScreen(TeacherLoginViewModel())
-}

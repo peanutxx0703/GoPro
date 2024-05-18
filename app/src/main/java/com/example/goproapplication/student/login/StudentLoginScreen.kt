@@ -82,8 +82,8 @@ fun StudentLoginScreen(studentLoginViewModel: StudentLoginViewModel){
                 value = stringResource(id = R.string.log_in_text),
                 onButtonClicked = {
                     studentLoginViewModel.login(context)
-//                    loginViewModel.onEvent(LoginUIEvent.LoginButtonClicked)
-                },
+                  //loginViewModel.onEvent(LoginUIEvent.LoginButtonClicked)
+                    },
                 isEnabled = studentLoginViewModel.allValidationPassed.value
             )
             Spacer(modifier = Modifier.height(30.dp))

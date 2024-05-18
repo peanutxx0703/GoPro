@@ -77,6 +77,19 @@ fun StudentSettingsScreen(studentLoginViewModel: StudentLoginViewModel){
                 HeadingTextComponent(value = stringResource(id = R.string.settings_text))
             }
             BoldTextComponent(value = stringResource(id = R.string.account))
+
+            CardItemComponent(
+                painterResource = painterResource(id = R.drawable.change_password),
+                value = "Teacher",
+                onClick = { GoProAppRoute.navigateTo(Screen.CourseViewScreen)}
+            )
+
+            CardItemComponent(
+                painterResource = painterResource(id = R.drawable.change_password),
+                value = "Student",
+                onClick = { GoProAppRoute.navigateTo(Screen.TeacherCourseViewScreen)}
+            )
+
             CardItemComponent(
                 painterResource = painterResource(id = R.drawable.change_password),
                 value = stringResource(id = R.string.change_password),

@@ -132,6 +132,7 @@ fun StudentProfileScreen(profileViewModel: ProfileViewModel = viewModel()) {
                 onButtonClicked = { GoProAppRoute.navigateTo(Screen.StudentSettingsScreen) },
                 isEnabled = true
             )
+
         }
     }
 
