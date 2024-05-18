@@ -17,7 +17,7 @@ import com.example.goproapplication.data.signup.SignUpViewModel
 import com.example.goproapplication.navigation.GoProAppRoute
 import com.example.goproapplication.navigation.Screen
 import com.example.goproapplication.screens.ForgotPasswordScreen
-import com.example.goproapplication.student.login.StudentLoginScreen
+
 import com.example.goproapplication.teacher.login.TeacherLoginScreen
 import com.example.goproapplication.student.profile.StudentProfileScreen
 import com.example.goproapplication.teacher.profile.TeacherProfileScreen
@@ -29,6 +29,7 @@ import com.example.goproapplication.student.settings.StudentContactUsScreen
 import com.example.goproapplication.student.settings.StudentPrivacyPolicyScreen
 import com.example.goproapplication.student.settings.StudentSettingsScreen
 import com.example.goproapplication.student.settings.StudentTermsAndConditionsScreen
+import com.example.goproapplication.teacher.login.StudentLoginScreen
 import com.example.goproapplication.teacher.settings.TeacherChangePasswordScreen
 import com.example.goproapplication.teacher.settings.TeacherContactUsScreen
 import com.example.goproapplication.teacher.settings.TeacherPrivacyPolicyScreen
@@ -37,8 +38,12 @@ import com.example.goproapplication.teacher.settings.TeacherTermsAndConditionsSc
 import com.example.goproapplication.ui.theme.AnnouncementScreen
 import com.example.goproapplication.ui.theme.GenerateTuitionFeeMonthly
 import com.example.goproapplication.ui.theme.PostAnnouncement
+import com.example.goproapplication.ui.theme.PostTask
+import com.example.goproapplication.ui.theme.QuizHistory
 import com.example.goproapplication.ui.theme.StudentAnnouncementScreen
 import com.example.goproapplication.ui.theme.StudentDashboardScreen
+import com.example.goproapplication.ui.theme.Survey
+import com.example.goproapplication.ui.theme.TaskScreen
 import com.example.goproapplication.ui.theme.TeacherDashboardScreen
 
 
@@ -61,7 +66,7 @@ fun GoProApp(){
                 is Screen.TeacherPrivacyPolicyScreen -> TeacherPrivacyPolicyScreen()
 
                 //Student
-                is Screen.StudentLoginScreen -> StudentLoginScreen(StudentLoginViewModel())
+                is Screen.StudentLoginScreen -> StudentLoginScreen(navController = rememberNavController(),TeacherLoginViewModel())
                 is Screen.StudentSignUpScreen -> StudentSignUpScreen(SignUpViewModel())
                 is Screen.StudentProfileScreen -> StudentProfileScreen(ProfileViewModel())
                 is Screen.StudentSettingsScreen -> StudentSettingsScreen(StudentLoginViewModel())
@@ -75,7 +80,7 @@ fun GoProApp(){
                 is Screen.TeacherCourseViewScreen -> TeacherCourseViewScreen()
 
                 //WJ
-                is Screen.TeacherViewScreen -> MyApp()
+                is Screen.TeacherViewScreen -> GoPro()
                 is Screen.AnnouncementScreen -> AnnouncementScreen()
                 is Screen.TeacherDashboardScreen -> TeacherDashboardScreen()
                 is Screen.PostAnnouncementScreen -> PostAnnouncement()
@@ -85,6 +90,12 @@ fun GoProApp(){
                 is Screen.GenerateTuitionFeeMonthlyScreen -> GenerateTuitionFeeMonthly()
                 is Screen.StudentAnnouncementScreen -> StudentAnnouncementScreen()
                 is Screen.StudentNav -> StudentNavBar()
+
+                //SY
+                is Screen.QuizAchievement -> QuizHistory()
+                is Screen.TaskScreen -> TaskScreen()
+                is Screen.PostTask -> PostTask()
+                is Screen.Survey -> Survey()
             }
         }
     }

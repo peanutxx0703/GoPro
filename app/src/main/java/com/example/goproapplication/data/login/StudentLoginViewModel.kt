@@ -19,6 +19,8 @@ class StudentLoginViewModel : ViewModel() {
 
     var loginInProgress = mutableStateOf(false)
 
+    var loginSuccess = mutableStateOf(false)
+
     fun onEvent(event : LoginUIEvent){
         when(event){
             is  LoginUIEvent.EmailChanged -> {
@@ -58,7 +60,7 @@ class StudentLoginViewModel : ViewModel() {
         }
     }
 
-    fun login(context: Context) {
+    fun login(context: Context): Boolean {
         loginInProgress.value = true
         val email = loginUIState.value.email
         val password = loginUIState.value.password
@@ -70,15 +72,22 @@ class StudentLoginViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     Log.d(TAG, "Login successful")
                     allValidationPassed.value = true
-                    Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
-                    GoProAppRoute.navigateTo(Screen.StudentNav)
+                    loginSuccess.value = true
+                    Toast.makeText(context, "Login successful ${loginSuccess.value}", Toast.LENGTH_SHORT).show()
+
+
+
                 } else {
                     Log.d(TAG, "Login failed: ${task.exception?.message}")
                     allValidationPassed.value = false
+                    loginSuccess.value = false
                     Toast.makeText(context, "Login failed. Please check your info and try again.", Toast.LENGTH_SHORT).show()
+
                 }
-                loginInProgress.value = false
+
+
             }
+        return loginSuccess.value
     }
 
     fun logout(context: Context){

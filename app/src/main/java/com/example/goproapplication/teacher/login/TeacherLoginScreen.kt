@@ -55,7 +55,6 @@ import com.example.goproapplication.navigation.Screen
 import com.example.goproapplication.navigation.SystemBackButtonHandler
 import com.example.goproapplication.screens.ForgotPasswordScreen
 import com.example.goproapplication.screens.WelcomeScreen
-import com.example.goproapplication.student.login.StudentLoginScreen
 import com.example.goproapplication.student.profile.StudentProfileScreen
 import com.example.goproapplication.student.settings.StudentChangePasswordScreen
 import com.example.goproapplication.student.settings.StudentContactUsScreen
@@ -88,7 +87,7 @@ fun TeacherLoginScreen(navController: NavController,teacherLoginViewModel: Teach
         isPinCorrect = enteredPin == expectedPin
     }
     if (enteredPin == expectedPin) { isPinCorrect = true }
-
+    val loginSuccess by teacherLoginViewModel.loginSuccess
 
     Box(modifier = Modifier.fillMaxSize()
     ) {
@@ -137,16 +136,17 @@ fun TeacherLoginScreen(navController: NavController,teacherLoginViewModel: Teach
                 value = stringResource(id = R.string.forgot_password),
                 onForgotClicked = { GoProAppRoute.navigateTo(Screen.ForgotPasswordScreen) }
             )
-            val loginSuccess by teacherLoginViewModel.loginSuccess
+
 
             ButtonComponent(
                 value = stringResource(id = R.string.log_in_text),
                 onButtonClicked = {
-                    teacherLoginViewModel.login(context)
-                    // Navigate to TeacherNav when login is successful
                     if (loginSuccess) {
                         navController.navigate("teacherNav")
                     }
+                    teacherLoginViewModel.login(context)
+                    // Navigate to TeacherNav when login is successful
+
                                   },
 //                    loginViewModel.onEvent(LoginUIEvent.LoginButtonClicked)
                 isEnabled = teacherLoginViewModel.allValidationPassed.value && isPinCorrect

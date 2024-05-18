@@ -40,6 +40,12 @@ sealed class Screen(){
     object StudentNav : Screen()
     object TeacherNav : Screen()
     object TeacherViewScreen : Screen()
+
+    //shiyun
+    object QuizAchievement : Screen()
+    object TaskScreen : Screen()
+    object PostTask : Screen()
+    object Survey : Screen()
 }
 
 object GoProAppRoute {

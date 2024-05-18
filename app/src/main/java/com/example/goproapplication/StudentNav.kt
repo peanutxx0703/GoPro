@@ -47,7 +47,6 @@ import com.example.goproapplication.navigation.GoProAppRoute
 import com.example.goproapplication.navigation.Screen
 import com.example.goproapplication.screens.ForgotPasswordScreen
 import com.example.goproapplication.screens.WelcomeScreen
-import com.example.goproapplication.student.login.StudentLoginScreen
 import com.example.goproapplication.student.profile.StudentProfileScreen
 import com.example.goproapplication.student.settings.StudentChangePasswordScreen
 import com.example.goproapplication.student.settings.StudentContactUsScreen
@@ -101,9 +100,9 @@ fun StudentNav(){
     Scaffold(
         bottomBar = {
             Box(modifier = Modifier.fillMaxSize()) {
-//                Column(modifier = Modifier) {
-//                    GoProApp() // Your main content
-//                }
+                Column(modifier = Modifier) {
+                    GoProApp()
+                }
                 // Bottom Navigation Bar
                 NavigationBar(
                     modifier = Modifier
@@ -136,14 +135,20 @@ fun StudentNav(){
                 }
             }
         }
-    ) {
+    ) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(innerPadding)
         ) {
-            GoProApp()
+            when (bottomNavState) {
+                0 -> GoProAppRoute.navigateTo(Screen.CourseViewScreen)
+                1 -> GoProAppRoute.navigateTo(Screen.StudentDashboardScreen)
+                2 -> GoProAppRoute.navigateTo(Screen.AnnouncementScreen)
+                3 -> GoProAppRoute.navigateTo(Screen.StudentProfileScreen)
+            }
         }
+
     }
 
 }

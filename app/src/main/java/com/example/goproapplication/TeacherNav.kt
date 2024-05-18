@@ -46,7 +46,6 @@ import com.example.goproapplication.navigation.GoProAppRoute
 import com.example.goproapplication.navigation.Screen
 import com.example.goproapplication.screens.ForgotPasswordScreen
 import com.example.goproapplication.screens.WelcomeScreen
-import com.example.goproapplication.student.login.StudentLoginScreen
 import com.example.goproapplication.student.profile.StudentProfileScreen
 import com.example.goproapplication.student.settings.StudentChangePasswordScreen
 import com.example.goproapplication.student.settings.StudentContactUsScreen

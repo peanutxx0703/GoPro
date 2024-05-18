@@ -50,7 +50,7 @@ fun StudentDashboardScreen() {
             modifier = Modifier.padding(15.dp)
         )
         Button(
-            onClick = { /* Handle button click here */ },
+            onClick = { GoProAppRoute.navigateTo(Screen.QuizAchievement) },
             modifier = Modifier
                 .padding(8.dp),
             colors = ButtonDefaults.buttonColors(Color.Transparent)
@@ -72,7 +72,7 @@ fun StudentDashboardScreen() {
 
         }
         Button(
-            onClick = { /* Handle button click here */ },
+            onClick = { GoProAppRoute.navigateTo(Screen.TaskScreen) },
             modifier = Modifier
                 .padding(8.dp),
             colors = ButtonDefaults.buttonColors(Color.Transparent)
@@ -115,7 +115,7 @@ fun StudentDashboardScreen() {
         }
 
         Button(
-            onClick = { /* Handle button click here */ },
+            onClick = { GoProAppRoute.navigateTo(Screen.Survey) },
             modifier = Modifier
                 .padding(8.dp),
             colors = ButtonDefaults.buttonColors(Color.Transparent)

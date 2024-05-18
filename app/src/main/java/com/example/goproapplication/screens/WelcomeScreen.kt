@@ -24,6 +24,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.goproapplication.CourseViewScreen
+import com.example.goproapplication.GoPro
 import com.example.goproapplication.SplashScreen
 import com.example.goproapplication.R
 import com.example.goproapplication.StudentNavBar
@@ -36,7 +37,6 @@ import com.example.goproapplication.data.login.TeacherLoginViewModel
 import com.example.goproapplication.data.signup.SignUpViewModel
 import com.example.goproapplication.navigation.GoProAppRoute
 import com.example.goproapplication.navigation.Screen
-import com.example.goproapplication.student.login.StudentLoginScreen
 import com.example.goproapplication.student.profile.StudentProfileScreen
 import com.example.goproapplication.student.settings.StudentChangePasswordScreen
 import com.example.goproapplication.student.settings.StudentContactUsScreen
@@ -89,10 +89,11 @@ fun WelcomeScreen(){
             Spacer(modifier = Modifier.height(30.dp))
             HeadingTextComponent(value = stringResource(id = R.string.welcome_option))
             Spacer(modifier = Modifier.height(40.dp))
+            val navController = rememberNavController()
             RoleButtonComponent(
                 value = stringResource(id = R.string.welcome_teacher),
                 onClick = {
-                    GoProAppRoute.navigateTo(Screen.TeacherLoginScreen)
+                    navController.navigate("teacherLogin")
                 }
             )
             Spacer(modifier = Modifier.height(40.dp))
