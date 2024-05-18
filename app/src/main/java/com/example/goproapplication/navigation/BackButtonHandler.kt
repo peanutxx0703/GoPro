@@ -9,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 
@@ -41,11 +43,29 @@ internal fun ComposableHandler(enabled: Boolean = true, onBackPressed: () -> Uni
 }
 
 
+//@Composable
+//internal fun SystemBackButtonHandler(onBackPressed: () -> Unit){
+//    CompositionLocalProvider(LocalOnBackPressedDispatcherOwner provides LocalLifecycleOwner.current as ComponentActivity) {
+//        ComposableHandler {
+//            onBackPressed()
+//        }
+//    }
+//}
+
 @Composable
-internal fun SystemBackButtonHandler(onBackPressed: () -> Unit){
-    CompositionLocalProvider(LocalOnBackPressedDispatcherOwner provides LocalLifecycleOwner.current as ComponentActivity) {
-        ComposableHandler {
-            onBackPressed()
+internal fun SystemBackButtonHandler(enabled: Boolean = true, onBackPressed: () -> Unit) {
+    val currentOnBackPressed by rememberUpdatedState(onBackPressed)
+    val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+
+    DisposableEffect(backDispatcher) {
+        val callback = object : OnBackPressedCallback(enabled) {
+            override fun handleOnBackPressed() {
+                currentOnBackPressed()
+            }
+        }
+        backDispatcher?.addCallback(callback)
+        onDispose {
+            callback.remove()
         }
     }
 }

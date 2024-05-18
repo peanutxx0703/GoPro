@@ -61,7 +61,7 @@ import com.example.goproapplication.ui.theme.TeacherDashboardScreen
 
 
 @Composable
-fun WelcomeScreen(navController: NavController){
+fun WelcomeScreen(){
     Box(modifier = Modifier.fillMaxSize()
     ) {
         Image(
@@ -92,14 +92,14 @@ fun WelcomeScreen(navController: NavController){
             RoleButtonComponent(
                 value = stringResource(id = R.string.welcome_teacher),
                 onClick = {
-                    navController.navigate("teacherLogin")
+                    GoProAppRoute.navigateTo(Screen.TeacherLoginScreen)
                 }
             )
             Spacer(modifier = Modifier.height(40.dp))
             RoleButtonComponent(
                 value = stringResource(id = R.string.welcome_student),
                 onClick = {
-                    navController.navigate("studentLogin")
+                    GoProAppRoute.navigateTo(Screen.StudentLoginScreen)
                 }
             )
 
@@ -110,5 +110,5 @@ fun WelcomeScreen(navController: NavController){
 @Preview
 @Composable
 fun WelcomeScreenPreview() {
-    WelcomeScreen(rememberNavController())
+    WelcomeScreen()
 }

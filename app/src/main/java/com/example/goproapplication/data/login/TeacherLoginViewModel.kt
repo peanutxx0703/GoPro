@@ -110,17 +110,20 @@ class TeacherLoginViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     Log.d(TAG, "Login successful")
                     allValidationPassed.value = true
-                    Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
-                    GoProAppRoute.navigateTo(Screen.TeacherViewScreen)
-
                     loginSuccess.value = true
+                    Toast.makeText(context, "Login successful ${loginSuccess.value}", Toast.LENGTH_SHORT).show()
+
+
+
                 } else {
                     Log.d(TAG, "Login failed: ${task.exception?.message}")
                     allValidationPassed.value = false
+                    loginSuccess.value = false
                     Toast.makeText(context, "Login failed. Please check your info and try again.", Toast.LENGTH_SHORT).show()
+
                 }
 
-                loginSuccess.value = false
+
             }
         return loginSuccess.value
     }

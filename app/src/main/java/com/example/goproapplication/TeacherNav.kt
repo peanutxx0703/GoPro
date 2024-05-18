@@ -137,11 +137,11 @@ fun TeacherNav(){
                 }
             }
         }
-    ) { contentPadding ->
+    ) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(contentPadding)
+                .padding(innerPadding)
         ) {
             when (bottomNavState) {
                 0 -> GoProAppRoute.navigateTo(Screen.TeacherCourseViewScreen)

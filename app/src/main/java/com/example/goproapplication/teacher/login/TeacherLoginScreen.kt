@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -87,13 +89,7 @@ fun TeacherLoginScreen(navController: NavController,teacherLoginViewModel: Teach
     }
     if (enteredPin == expectedPin) { isPinCorrect = true }
 
-    // Observe login success state
-    val loginSuccess by teacherLoginViewModel.loginSuccess
 
-    // Navigate to TeacherNav when login is successful
-    if (loginSuccess) {
-        navController.navigate("teacherViewScreen")
-    }
     Box(modifier = Modifier.fillMaxSize()
     ) {
         Image(
@@ -141,10 +137,16 @@ fun TeacherLoginScreen(navController: NavController,teacherLoginViewModel: Teach
                 value = stringResource(id = R.string.forgot_password),
                 onForgotClicked = { GoProAppRoute.navigateTo(Screen.ForgotPasswordScreen) }
             )
+            val loginSuccess by teacherLoginViewModel.loginSuccess
+
             ButtonComponent(
                 value = stringResource(id = R.string.log_in_text),
                 onButtonClicked = {
                     teacherLoginViewModel.login(context)
+                    // Navigate to TeacherNav when login is successful
+                    if (loginSuccess) {
+                        navController.navigate("teacherNav")
+                    }
                                   },
 //                    loginViewModel.onEvent(LoginUIEvent.LoginButtonClicked)
                 isEnabled = teacherLoginViewModel.allValidationPassed.value && isPinCorrect

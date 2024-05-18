@@ -8,6 +8,7 @@ import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.goproapplication.screens.WelcomeScreen
+import com.example.goproapplication.screens.WelcomeScreenPreview
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

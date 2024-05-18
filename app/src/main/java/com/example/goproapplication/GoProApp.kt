@@ -47,7 +47,7 @@ fun GoProApp(){
     Surface(modifier = Modifier.fillMaxSize()) {
         Crossfade(targetState = GoProAppRoute.currentScreen) { currentState->
             when(currentState.value){
-                is Screen.WelcomeScreen -> WelcomeScreen(navController = rememberNavController())
+                is Screen.WelcomeScreen -> WelcomeScreen()
                 is Screen.ForgotPasswordScreen -> ForgotPasswordScreen()
 
                 //Teacher

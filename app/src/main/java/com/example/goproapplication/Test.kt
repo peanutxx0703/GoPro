@@ -43,10 +43,10 @@ fun MyApp(){
     val navController= rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = "splash" // Set your initial destination
+        startDestination = "teacherLogin" // Set your initial destination
     ) {
         composable("splash"){ SplashScreen(navController = navController) }
-        composable("welcome") { WelcomeScreen(navController = rememberNavController()) }
+        composable("welcome") { WelcomeScreen() }
         composable("forgotPassword") { ForgotPasswordScreen() }
 
         // Teacher screens
