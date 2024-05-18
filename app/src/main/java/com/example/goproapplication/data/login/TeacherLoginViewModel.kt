@@ -15,6 +15,7 @@ import com.example.goproapplication.GoProApp
 import com.example.goproapplication.SplashScreen
 import com.example.goproapplication.StudentNavBar
 import com.example.goproapplication.TeacherCourseViewScreen
+import com.example.goproapplication.TeacherNav
 import com.example.goproapplication.TeacherNavBar
 import com.example.goproapplication.data.rules.Validator
 import com.example.goproapplication.data.signup.SignUpViewModel
@@ -96,8 +97,8 @@ class TeacherLoginViewModel : ViewModel() {
         }
     }
 
-    fun login(context: Context): Boolean {
 
+    fun login(context: Context): Boolean {
         loginInProgress.value = true
         val email = loginUIState.value.email
         val password = loginUIState.value.password

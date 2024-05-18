@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -91,14 +92,14 @@ fun WelcomeScreen(navController: NavController){
             RoleButtonComponent(
                 value = stringResource(id = R.string.welcome_teacher),
                 onClick = {
-                    GoProAppRoute.navigateTo(Screen.TeacherLoginScreen)
+                    navController.navigate("teacherLogin")
                 }
             )
             Spacer(modifier = Modifier.height(40.dp))
             RoleButtonComponent(
                 value = stringResource(id = R.string.welcome_student),
                 onClick = {
-                    GoProAppRoute.navigateTo(Screen.StudentLoginScreen)
+                    navController.navigate("studentLogin")
                 }
             )
 
@@ -109,5 +110,5 @@ fun WelcomeScreen(navController: NavController){
 @Preview
 @Composable
 fun WelcomeScreenPreview() {
-    WelcomeScreen(navController = rememberNavController())
+    WelcomeScreen(rememberNavController())
 }

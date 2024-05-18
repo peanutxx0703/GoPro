@@ -76,52 +76,6 @@ import com.example.goproapplication.ui.theme.StudentDashboardScreen
 import com.example.goproapplication.ui.theme.TeacherDashboardScreen
 
 @Composable
-fun MyApp(){
-    val navController= rememberNavController()
-    NavHost(
-        navController = navController,
-        startDestination = "home" // Set your initial destination
-    ) {
-        composable("home"){ SplashScreen(navController = navController) }
-        composable("welcome") { WelcomeScreen(navController = navController) }
-        composable("forgotPassword") { ForgotPasswordScreen() }
-
-        // Teacher screens
-        composable("teacherLogin") {
-            TeacherLoginScreen(navController = navController, teacherLoginViewModel = TeacherLoginViewModel())
-        }
-        composable("teacherSignUp") { TeacherSignUpScreen(SignUpViewModel()) }
-        composable("teacherProfile") { TeacherProfileScreen(ProfileViewModel()) }
-        composable("teacherSettings") { TeacherSettingsScreen(TeacherLoginViewModel()) }
-        composable("teacherChangePassword") { TeacherChangePasswordScreen() }
-        composable("teacherContactUs") { TeacherContactUsScreen() }
-        composable("teacherTermsAndConditions") { TeacherTermsAndConditionsScreen() }
-        composable("teacherPrivacyPolicy") { TeacherPrivacyPolicyScreen() }
-
-        // Student screens
-        composable("studentLogin") { StudentLoginScreen(StudentLoginViewModel()) }
-        composable("studentSignUp") { StudentSignUpScreen(SignUpViewModel()) }
-        composable("studentProfile") { StudentProfileScreen(ProfileViewModel()) }
-        composable("studentSettings") { StudentSettingsScreen(StudentLoginViewModel()) }
-        composable("studentChangePassword") { StudentChangePasswordScreen() }
-        composable("studentContactUs") { StudentContactUsScreen() }
-        composable("studentTermsAndConditions") { StudentTermsAndConditionsScreen() }
-        composable("studentPrivacyPolicy") { StudentPrivacyPolicyScreen() }
-
-        // Other screens
-        composable("courseView") { CourseViewScreen() }
-        composable("teacherCourseView") { TeacherCourseViewScreen() }
-        composable("announcement") { AnnouncementScreen() }
-        composable("teacherDashboard") { TeacherDashboardScreen() }
-        composable("postAnnouncement") { PostAnnouncement() }
-        composable("teacherNav") { TeacherNavBar() }
-        composable("studentDashboard") { StudentDashboardScreen() }
-        composable("generateTuitionFeeMonthly") { GenerateTuitionFeeMonthly() }
-        composable("studentAnnouncement") { StudentAnnouncementScreen() }
-        composable("studentNav") { StudentNavBar() }
-    }
-}
-@Composable
 fun TeacherLoginScreen(navController: NavController,teacherLoginViewModel: TeacherLoginViewModel){
 
     val context = LocalContext.current
@@ -134,12 +88,12 @@ fun TeacherLoginScreen(navController: NavController,teacherLoginViewModel: Teach
     if (enteredPin == expectedPin) { isPinCorrect = true }
 
     // Observe login success state
-    //val loginSuccess by teacherLoginViewModel.loginSuccess
+    val loginSuccess by teacherLoginViewModel.loginSuccess
 
     // Navigate to TeacherNav when login is successful
-    //if (loginSuccess) {
-        //navController.navigate("teacherNav")
-    //}
+    if (loginSuccess) {
+        navController.navigate("teacherViewScreen")
+    }
     Box(modifier = Modifier.fillMaxSize()
     ) {
         Image(

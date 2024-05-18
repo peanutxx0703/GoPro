@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -46,7 +47,7 @@ fun GoProApp(){
     Surface(modifier = Modifier.fillMaxSize()) {
         Crossfade(targetState = GoProAppRoute.currentScreen) { currentState->
             when(currentState.value){
-                is Screen.WelcomeScreen -> WelcomeScreen(navController =  rememberNavController())
+                is Screen.WelcomeScreen -> WelcomeScreen(navController = rememberNavController())
                 is Screen.ForgotPasswordScreen -> ForgotPasswordScreen()
 
                 //Teacher
@@ -74,7 +75,7 @@ fun GoProApp(){
                 is Screen.TeacherCourseViewScreen -> TeacherCourseViewScreen()
 
                 //WJ
-                is Screen.TeacherViewScreen -> TeacherView()
+                is Screen.TeacherViewScreen -> MyApp()
                 is Screen.AnnouncementScreen -> AnnouncementScreen()
                 is Screen.TeacherDashboardScreen -> TeacherDashboardScreen()
                 is Screen.PostAnnouncementScreen -> PostAnnouncement()
@@ -88,4 +89,5 @@ fun GoProApp(){
         }
     }
 }
+
 
